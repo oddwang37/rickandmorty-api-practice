@@ -10,6 +10,7 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
+    "@types/styled-components": "^5.1.24",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -20,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "svg:transform": "npx @svgr/cli --ignore-existing --typescript -d src/assets/svg/components src/assets/svg/icons"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^6.2.1",
+    "styled-components": "^5.3.3"
   }
 }

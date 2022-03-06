@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Header from './components/Header/Header';
 
-function App() {
+import CharactersBlock from './components/CharactersBlock/CharactersBlock';
+import RandomChar from './components/RandomChar/RandomChar';
+import CharacterInfo from './components/CharacterInfo/CharacterInfo';
+
+const App = () => {
+  const [selectedChar, selectChar] = useState<null | number>(null);
+
+  const onCharSelect = (id: number) => {
+    selectChar(id);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Root>
+      <Header />
+      <RandomChar />
+      <CharactersBlock onCharSelect={onCharSelect} />
+      <CharacterInfo selectedChar={selectedChar} />
+    </Root>
   );
-}
+};
+
+const Root = styled.div``;
 
 export default App;
