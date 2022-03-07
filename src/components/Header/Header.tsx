@@ -21,6 +21,7 @@ export default Header;
 const Root = styled.header`
   display: flex;
   justify-content: space-between;
+  grid-area: 1 / 1 / 2 / 4;
 `;
 const Logo = styled.div`
   display: flex;

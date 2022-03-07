@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CharacterCard = ({ name, image }: PropsType) => {
+const CharacterCard = ({ name, image, onCharSelect }: PropsType) => {
   /*   const [data, setData] = useState({
     character: {
       name: '',
@@ -34,7 +34,7 @@ const CharacterCard = ({ name, image }: PropsType) => {
   } = data;
  */
   return (
-    <Root>
+    <Root onClick={onCharSelect}>
       <Image src={image} />
       <Name>{name}</Name>
     </Root>
@@ -46,7 +46,7 @@ export default CharacterCard;
 type PropsType = {
   name: string;
   image: string;
-  onClick: Function;
+  onCharSelect: () => any;
 };
 
 const Root = styled.div`

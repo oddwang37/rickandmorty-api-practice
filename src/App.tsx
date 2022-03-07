@@ -23,6 +23,11 @@ const App = () => {
   );
 };
 
-const Root = styled.div``;
+const Root = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 90px 250px 1fr;
+  gap: 50px;
+`;
 
 export default App;

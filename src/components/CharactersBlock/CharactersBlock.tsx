@@ -35,33 +35,27 @@ const CharactersBlock = ({ onCharSelect }: CharacterBlockProps) => {
 
   const spinner = loading ? <LoadingMessage /> : null;
   const errorMes = error ? <ErrorMessage /> : null;
-  const content = !(spinner || errorMes) ? (
-    <View array={charList} onCharSelect={onCharSelect} />
-  ) : null;
 
   return (
     <Root>
       {spinner}
       {errorMes}
-      {content}
+      {!(spinner || errorMes) ? (
+        <>
+          {charList.map((item) => (
+            <CharacterCard
+              name={item.name}
+              image={item.image}
+              key={item.id + ''}
+              onCharSelect={() => onCharSelect(item.id)}
+            />
+          ))}
+        </>
+      ) : null}
     </Root>
   );
 };
 
-const View = ({ array, onCharSelect }: ViewProps) => {
-  return (
-    <>
-      {array.map((item) => (
-        <CharacterCard
-          name={item.name}
-          image={item.image}
-          key={item.id + ''}
-          onClick={onCharSelect}
-        />
-      ))}
-    </>
-  );
-};
 export default CharactersBlock;
 
 type CharacterBlockProps = {
@@ -74,16 +68,11 @@ interface Character {
   id: number;
 }
 
-type ViewProps = {
-  array: { name: string; image: string; id: number }[];
-  onCharSelect: Function;
-};
-
 const Root = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
   gap: 60px;
   margin-top: 30px;
-  padding: 30px;
+  grid-area: 3 / 1 / 4 / 3;
 `;

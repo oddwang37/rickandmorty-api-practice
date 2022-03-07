@@ -50,9 +50,9 @@ const RandomChar = () => {
   const { image, name, status, location, species, gender } = charData;
 
   return (
-    <>
+    <Root>
       <Title>Get random character</Title>
-      <Root>
+      <Wrapper>
         {spinner}
         {errorMes}
         {!(spinner || errorMes) ? (
@@ -74,8 +74,8 @@ const RandomChar = () => {
             </Info>
           </>
         ) : null}
-      </Root>
-    </>
+      </Wrapper>
+    </Root>
   );
 };
 
@@ -85,12 +85,13 @@ interface StatusProps {
   status: string;
 }
 
-const Title = styled.h2`
-  margin-top: 30px;
-`;
 const Root = styled.div`
-  width: 100%;
-  height: 250px;
+  grid-area: 2 / 1 / 3 / 3;
+`;
+
+const Title = styled.h2``;
+
+const Wrapper = styled.div`
   display: flex;
   margin-top: 20px;
   gap: 20px;

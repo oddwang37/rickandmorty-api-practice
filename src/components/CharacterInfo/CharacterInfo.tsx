@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { getCharacter } from './../../services/services';
 
+import CharacterInfoPlaceholder from './CharacterInfoPlaceholder/CharacterInfoPlaceholder';
+
 const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -37,11 +39,30 @@ const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
 
   useEffect(() => {
     updateCharacter(selectedChar);
-  }, []);
+  }, [selectedChar]);
+
+  const { name, image, species, status, gender, location } = charData;
 
   return (
     <Root>
-      <Name></Name>
+      {selectedChar ? (
+        <>
+          <Wrapper>
+            <ImageWrap>
+              <Image src={image} />
+            </ImageWrap>
+            <div>
+              <Name>{name}</Name>
+              <Species>{species}</Species>
+            </div>
+          </Wrapper>
+          <Status>Status: {status}</Status>
+          <Gender>Gender: {gender}</Gender>
+          <Location>Location: {location}</Location>
+        </>
+      ) : (
+        <CharacterInfoPlaceholder />
+      )}
     </Root>
   );
 };
@@ -53,21 +74,47 @@ type CharacterInfoProps = {
 };
 
 const Root = styled.div`
+  grid-area: 2 / 3 / 4 / 4;
   background-color: #303030;
+  border-radius: 5px;
+  padding: 30px;
+  position: sticky;
+  height: 550px;
+  right: 30px;
+  top: 100px;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
+const Image = styled.img`
+  border-radius: 5px;
+`;
+
+const ImageWrap = styled.div`
+  width: 200px;
 `;
 
 const Name = styled.div`
   font-size: 20px;
   color: #fff;
   font-weight: 500;
+  margin-top: 20px;
 `;
 
 const Gender = styled.div`
   font-size: 18px;
   color: #d4d3d3;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
 `;
 
-const Species = styled(Gender)``;
+const Species = styled(Gender)`
+  letter-spacing: inherit;
+  margin-top: 5px;
+`;
 
 const Location = styled(Gender)``;
 
