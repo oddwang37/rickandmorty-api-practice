@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getCharacter } from './../../services/services';
 
 import CharacterInfoPlaceholder from './CharacterInfoPlaceholder/CharacterInfoPlaceholder';
+import EpisodesList from './EpisodesList/EpisodesList';
 
 const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
   const [loading, setLoading] = useState(true);
@@ -15,6 +16,7 @@ const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
     status: '',
     gender: '',
     location: '',
+    episode: [],
   });
 
   const updateCharacter = (id: number | null) => {
@@ -29,6 +31,7 @@ const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
           status: res.status,
           gender: res.gender,
           location: res.location.name,
+          episode: res.episode,
         });
       })
       .catch((error) => {
@@ -41,7 +44,7 @@ const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
     updateCharacter(selectedChar);
   }, [selectedChar]);
 
-  const { name, image, species, status, gender, location } = charData;
+  const { name, image, species, status, gender, location, episode } = charData;
 
   return (
     <Root>
@@ -59,6 +62,7 @@ const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
           <Status>Status: {status}</Status>
           <Gender>Gender: {gender}</Gender>
           <Location>Location: {location}</Location>
+          <EpisodesList data={episode}></EpisodesList>
         </>
       ) : (
         <CharacterInfoPlaceholder />
@@ -79,9 +83,9 @@ const Root = styled.div`
   border-radius: 5px;
   padding: 30px;
   position: sticky;
-  height: 550px;
+  height: 650px;
   right: 30px;
-  top: 100px;
+  top: 70px;
 `;
 
 const Wrapper = styled.div`
@@ -106,8 +110,7 @@ const Name = styled.div`
 
 const Gender = styled.div`
   font-size: 18px;
-  color: #d4d3d3;
-  letter-spacing: 0.1em;
+  color: #fff;
   margin-top: 10px;
 `;
 

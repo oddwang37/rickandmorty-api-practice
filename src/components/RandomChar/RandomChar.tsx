@@ -24,7 +24,6 @@ const RandomChar = () => {
     getCharacter(rand)
       .then((res) => {
         setLoading(false);
-        console.log(res);
         setChar({
           name: res.name,
           image: res.image,

@@ -17,7 +17,7 @@ const CharactersBlock = ({ onCharSelect }: CharacterBlockProps) => {
     randomIds.push(rand);
   }
 
-  const CharacterHandler = (id: number | number[]) => {
+  const characterHandler = (id: number | number[]) => {
     getCharacter(id)
       .then((res) => {
         setLoading(false);
@@ -30,7 +30,7 @@ const CharactersBlock = ({ onCharSelect }: CharacterBlockProps) => {
   };
 
   useEffect(() => {
-    CharacterHandler(randomIds);
+    characterHandler(randomIds);
   }, []);
 
   const spinner = loading ? <LoadingMessage /> : null;
