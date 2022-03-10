@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CharacterCard = ({ name, image, onCharSelect }: PropsType) => {
+const CharacterCard = ({ name, image, id, selectedChar, onCharSelect }: PropsType) => {
   /*   const [data, setData] = useState({
     character: {
       name: '',
@@ -33,8 +33,11 @@ const CharacterCard = ({ name, image, onCharSelect }: PropsType) => {
     loading,
   } = data;
  */
+
+  const selected = selectedChar === id;
+
   return (
-    <Root onClick={onCharSelect}>
+    <Root onClick={onCharSelect} selected={selected}>
       <Image src={image} />
       <Name>{name}</Name>
     </Root>
@@ -46,15 +49,22 @@ export default CharacterCard;
 type PropsType = {
   name: string;
   image: string;
+  id: number;
   onCharSelect: () => any;
+  selectedChar: number | null;
 };
 
-const Root = styled.div`
+type RootProps = {
+  selected: boolean;
+};
+
+const Root = styled.div<RootProps>`
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s all;
+  transform: ${(p) => (p.selected ? 'translateY(-30px)' : 'none')};
+  border: ${(p) => (p.selected ? '4px solid #fff' : 'none')};
   &:hover {
-    transform: translateY(-15px);
     border: 4px solid #999999;
   }
 `;

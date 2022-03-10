@@ -1,17 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+
 import rickHead from './../../assets/images/rick-head.png';
 
 const Header = () => {
   return (
     <Root>
-      <Logo>
-        <LogoImg src={rickHead} alt="face of drunk Rick from Rick and Morty serial" />
-        <LogoText>
-          Rick and Morty <br /> characters
-        </LogoText>
-      </Logo>
-      <Link>Episodes</Link>
+      <NavLink exact to="/">
+        <Logo>
+          <LogoImg src={rickHead} alt="face of drunk Rick from Rick and Morty serial" />
+          <LogoText>
+            Rick and Morty <br /> characters
+          </LogoText>
+        </Logo>
+      </NavLink>
+      <Inner>
+        <NavLink exact to="/" activeStyle={activeNavLinkStyle}>
+          Characters
+        </NavLink>
+        <div>/</div>
+        <NavLink exact to="/episodes" activeStyle={activeNavLinkStyle}>
+          Episodes
+        </NavLink>
+      </Inner>
     </Root>
   );
 };
@@ -31,9 +43,9 @@ const Logo = styled.div`
 `;
 
 const LogoImg = styled.img`
-  flex: 0.4;
+  width: 80px;
 `;
-const LogoText = styled.div`
+const LogoText = styled.span`
   font-size: 22px;
   font-weight: 700;
   text-transform: capitalize;
@@ -41,10 +53,12 @@ const LogoText = styled.div`
   margin-left: 10px;
 `;
 
-const Link = styled.a`
-  text-transform: capitalize;
-  align-self: center;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
+const Inner = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex: 0.15;
 `;
+
+const activeNavLinkStyle = {
+  textDecoration: 'underline',
+};

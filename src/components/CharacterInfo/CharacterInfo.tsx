@@ -62,7 +62,7 @@ const CharacterInfo = ({ selectedChar }: CharacterInfoProps) => {
           <Status>Status: {status}</Status>
           <Gender>Gender: {gender}</Gender>
           <Location>Location: {location}</Location>
-          <EpisodesList data={episode}></EpisodesList>
+          <EpisodesList data={episode} />
         </>
       ) : (
         <CharacterInfoPlaceholder />

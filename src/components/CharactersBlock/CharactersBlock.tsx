@@ -5,7 +5,7 @@ import CharacterCard from '../CharacterCard/CharacterCard';
 import LoadingMessage from '../ui/LoadingMessage';
 import ErrorMessage from '../ui/ErrorMessage';
 
-const CharactersBlock = ({ onCharSelect }: CharacterBlockProps) => {
+const CharactersBlock = ({ onCharSelect, selectedChar }: CharacterBlockProps) => {
   const [loading, setLoading] = useState(true);
   const [charList, setCharList] = useState<Array<Character>>([]);
   const [error, setError] = useState(false);
@@ -31,6 +31,7 @@ const CharactersBlock = ({ onCharSelect }: CharacterBlockProps) => {
 
   useEffect(() => {
     characterHandler(randomIds);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const spinner = loading ? <LoadingMessage /> : null;
@@ -46,7 +47,9 @@ const CharactersBlock = ({ onCharSelect }: CharacterBlockProps) => {
             <CharacterCard
               name={item.name}
               image={item.image}
+              id={item.id}
               key={item.id + ''}
+              selectedChar={selectedChar}
               onCharSelect={() => onCharSelect(item.id)}
             />
           ))}
@@ -60,6 +63,7 @@ export default CharactersBlock;
 
 type CharacterBlockProps = {
   onCharSelect: Function;
+  selectedChar: number | null;
 };
 
 interface Character {
