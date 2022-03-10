@@ -26,7 +26,7 @@ export const getAllEpisodes = async () => {
 };
 
 export const getFilterEpisodes = async (filter: string) => {
-  return await getResources(`${_apiBase}episode/?${filter}`).then((res) => console.log(res));
+  return await getResources(`${_apiBase}episode/?${filter}`);
 };
 
 export default getResources;

@@ -1,30 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { getFilterEpisodes } from './../../services/services';
+import Season from './Season/Season';
 
 const EpisodesBlock = () => {
-  const episodesHandler = () => {
-    getFilterEpisodes('episode=s01').then((res) => {
-      //console.log(res);
-    });
-  };
-
-  episodesHandler();
-
   return (
     <Root>
-      <Title>Click an episode to see more info...</Title>
+      <Title>Click on episode to see more info</Title>
+      <Season number={1} />
+      <Season number={2} />
+      <Season number={3} />
+      <Season number={4} />
+      <Season number={5} />
     </Root>
   );
 };
 
 export default EpisodesBlock;
 
-const Root = styled.ul`
-  list-style-type: none;
+const Root = styled.div`
+  grid-area: 1 / 2 / 3 / 3;
+  margin-top: 30px;
 `;
 
 const Title = styled.h1`
+  text-align: center;
+  margin-top: 20px;
   font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
 `;
