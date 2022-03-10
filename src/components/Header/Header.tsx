@@ -31,9 +31,11 @@ const Header = () => {
 export default Header;
 
 const Root = styled.header`
+  grid-area: 1 / 1 / 2 / 4;
   display: flex;
   justify-content: space-between;
-  grid-area: 1 / 1 / 2 / 4;
+  align-items: center;
+  padding: 30px 30px 10px 30px;
 `;
 const Logo = styled.div`
   display: flex;

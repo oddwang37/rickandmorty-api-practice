@@ -8,6 +8,7 @@ import RandomChar from './components/RandomChar/RandomChar';
 import CharacterInfo from './components/CharacterInfo/CharacterInfo';
 import EpisodesBlock from './components/EpisodesBlock/EpisodesBlock';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+import SingleEpPage from './components/SingleEpPage/SingleEpPage';
 
 const App = () => {
   const [selectedChar, selectChar] = useState<null | number>(null);
@@ -28,6 +29,9 @@ const App = () => {
           </Route>
           <Route exact path="/episodes">
             <EpisodesBlock />
+          </Route>
+          <Route exact path="/episodes/:episodeId">
+            <SingleEpPage />
           </Route>
           <Route path="*">
             <ErrorPage />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { getFilterEpisodes } from './../../../services/services';
 
@@ -9,7 +10,6 @@ const Season = ({ number }: SeasonProps) => {
   const updateEpisodes = () => {
     getFilterEpisodes(`episode=s0${number}`).then((res) => {
       setEpisodes(res.results);
-      console.log(res.results);
     });
   };
 
@@ -23,7 +23,9 @@ const Season = ({ number }: SeasonProps) => {
       <Title>Season {number}</Title>
       <Episodes>
         {episodes.map((ep, i) => (
-          <Episode>{i + 1}</Episode>
+          <Episode>
+            <Link to={`/episodes/${ep.id}`}>{i + 1}</Link>
+          </Episode>
         ))}
       </Episodes>
     </Root>
@@ -36,7 +38,7 @@ type SeasonProps = {
   number: number;
 };
 
-type EpisodesType = { episode: string; name: string }[];
+type EpisodesType = { episode: string; name: string; id: number }[];
 
 const Root = styled.div``;
 

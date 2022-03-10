@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
     background-color: #141414;
     color: #fff;
     font-family: 'Rubik';
-    padding: 30px;
     user-select: none;
   }
   * {
