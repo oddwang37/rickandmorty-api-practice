@@ -20,7 +20,7 @@ const Header = () => {
           Characters
         </NavLink>
         <div>/</div>
-        <NavLink exact to="/episodes" activeStyle={activeNavLinkStyle}>
+        <NavLink to="/episodes" activeStyle={activeNavLinkStyle}>
           Episodes
         </NavLink>
       </Inner>
@@ -36,6 +36,7 @@ const Root = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 30px 30px 10px 30px;
+  color: #371b0f;
 `;
 const Logo = styled.div`
   display: flex;

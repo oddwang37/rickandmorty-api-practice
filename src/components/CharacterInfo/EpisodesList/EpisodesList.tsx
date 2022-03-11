@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { getEpisode } from '../../../services/services';
 import Episode from './Episode/Episode';
@@ -27,7 +28,9 @@ const EpisodesList = ({ data }: EpisodesListProps) => {
       <Title>Episodes:</Title>
       <Root>
         {episodes.map((item: any) => (
-          <Episode name={item.name} episode={item.episode} key={item.id + ''} />
+          <Link to={`./episodes/${item.id}`}>
+            <Episode name={item.name} episode={item.episode} key={item.id + ''} />
+          </Link>
         ))}
       </Root>
     </>

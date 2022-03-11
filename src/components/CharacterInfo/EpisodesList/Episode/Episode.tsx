@@ -22,9 +22,9 @@ const Root = styled.li`
   font-size: 18px;
   display: flex;
   justify-content: space-between;
-  //box-shadow: 10px 10px 0.1px #fff;
   border-radius: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
 `;
 
 const Name = styled.div``;
